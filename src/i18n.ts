@@ -1,4 +1,4 @@
-export type Language = 'en' | 'ru';
+export type Language = 'en' | 'ru' | 'tr';
 
 type UiCopy = {
   title: string;
@@ -33,5 +33,16 @@ export const uiText: Record<Language, UiCopy> = {
       'Спасибо, что заглянули в мой проект. Я сделал это приложение, потому что хочу учиться в России и начал изучать русский язык. Исходный код есть на',
     motivationLinkLabel: 'GitHub',
     motivationOutro: '.',
+  },
+  tr: {
+    title: 'Kiril-Latin Dönüştürücü',
+    subtitle: 'Yazı yazarak veya Yapıştırarak Dönüştür',
+    cyrillicPlaceholder: 'Kiril',
+    latinPlaceholder: 'Latin',
+    convertButton: 'Dönüştür',
+    motivationIntro:
+      'Projemi kullandığın için teşekkür ederim. Bu uygulamayı, Rusya\'da okumak istediğim ve Rusça öğrenmeye başladığım için geliştirdim. Kaynak kodlarına',
+    motivationLinkLabel: 'GitHub\'dan',
+    motivationOutro: ' ulaşabilirsin.',
   },
 };

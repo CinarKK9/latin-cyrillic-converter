@@ -13,6 +13,7 @@ function LanguageSwitcher({ language, onChange }: LanguageSwitcherProps) {
   const languageOptions: Array<{ code: Language; label: string; flag: string }> = [
     { code: 'en', label: 'English', flag: '/flags/gb.svg' },
     { code: 'ru', label: 'Русский', flag: '/flags/ru.svg' },
+    { code: 'tr', label: 'Türkçe', flag: '/flags/tr.svg' },
   ];
 
   const activeOption = languageOptions.find((option) => option.code === language) ?? languageOptions[0];
@@ -26,10 +27,12 @@ function LanguageSwitcher({ language, onChange }: LanguageSwitcherProps) {
     <Box position={'relative'}>
       <Button
         onClick={() => setIsOpen((previousState) => !previousState)}
-        bg={'white'}
-        color={'#0039A7'}
-        _hover={{ bg: 'gray.100' }}
-        _active={{ bg: 'gray.200' }}
+        bg={'whiteAlpha.200'}
+        color={'white'}
+        borderWidth={'1px'}
+        borderColor={'whiteAlpha.500'}
+        _hover={{ bg: 'whiteAlpha.300' }}
+        _active={{ bg: 'whiteAlpha.400' }}
         size={'sm'}
         borderRadius={'md'}
         px={3}
@@ -37,7 +40,7 @@ function LanguageSwitcher({ language, onChange }: LanguageSwitcherProps) {
       >
         <Image src={activeOption.flag} alt={activeOption.label} boxSize={'20px'} mr={2} />
         <Text fontWeight={'semibold'}>{activeOption.label}</Text>
-        <Text ml={2} fontSize={'xs'} lineHeight={1} color={'#0039A7'}>
+        <Text ml={2} fontSize={'xs'} lineHeight={1} color={'whiteAlpha.900'}>
           ▾
         </Text>
       </Button>
@@ -47,11 +50,11 @@ function LanguageSwitcher({ language, onChange }: LanguageSwitcherProps) {
           position={'absolute'}
           right={0}
           mt={2}
-          bg={'white'}
+          bg={'#0039A7'}
           borderRadius={'md'}
           boxShadow={'lg'}
           borderWidth={'1px'}
-          borderColor={'gray.200'}
+          borderColor={'whiteAlpha.400'}
           minW={'160px'}
           zIndex={20}
           overflow={'hidden'}
@@ -64,8 +67,9 @@ function LanguageSwitcher({ language, onChange }: LanguageSwitcherProps) {
               justifyContent={'flex-start'}
               width={'full'}
               borderRadius={0}
-              bg={option.code === language ? 'gray.100' : 'transparent'}
-              _hover={{ bg: 'gray.100' }}
+              color={'white'}
+              bg={option.code === language ? 'whiteAlpha.300' : 'transparent'}
+              _hover={{ bg: 'whiteAlpha.200' }}
             >
               <Image src={option.flag} alt={option.label} boxSize={'18px'} mr={2} />
               <Text>{option.label}</Text>

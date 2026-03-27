@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Box, Text, Button, Textarea, Link } from '@chakra-ui/react';
+import { Box, Text, Textarea, Link } from '@chakra-ui/react';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import { uiText, type Language } from './i18n';
 
@@ -83,15 +83,14 @@ function App() {
   const [latinText, setLatinText] = useState('');
   const text = uiText[language];
 
-  const handleConvert = () => {
-    if (cyrillicText.trim()) {
-      setLatinText(convertCyrillic(cyrillicText));
-      return;
-    }
+  const handleCyrillicChange = (value: string) => {
+    setCyrillicText(value);
+    setLatinText(convertCyrillic(value));
+  };
 
-    if (latinText.trim()) {
-      setCyrillicText(convertLatin(latinText));
-    }
+  const handleLatinChange = (value: string) => {
+    setLatinText(value);
+    setCyrillicText(convertLatin(value));
   };
 
   return (
@@ -110,7 +109,7 @@ function App() {
               placeholder={text.cyrillicPlaceholder}
               height={'11/12'}
               value={cyrillicText}
-              onChange={(event) => setCyrillicText(event.target.value)}
+              onChange={(event) => handleCyrillicChange(event.target.value)}
             />
           </Box>
           <Box width={'1/2'}>
@@ -118,14 +117,9 @@ function App() {
               placeholder={text.latinPlaceholder}
               height={'11/12'}
               value={latinText}
-              onChange={(event) => setLatinText(event.target.value)}
+              onChange={(event) => handleLatinChange(event.target.value)}
             />
           </Box>
-        </Box>
-        <Box>
-          <Button bg={'#0039A7'} _hover={{ bg: '#002671' }} onClick={handleConvert}>
-            {text.convertButton}
-          </Button>
         </Box>
         <Text mt={'8'} fontSize={'sm'} color={'gray.600'} textAlign={'center'}>
           {text.motivationIntro}{' '}
